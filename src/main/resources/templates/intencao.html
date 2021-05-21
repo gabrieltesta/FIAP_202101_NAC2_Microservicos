@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Produtos</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstraptheme.min.css}"
+          rel="stylesheet" />
+
+    <style>
+.logo-container {
+	background-color: #000000;
+	color: #fff;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+    <div class="w-auto p-3 mt-3 logo-container">Intenção de financiamento</div>
+    <div>
+        <h1 class="display-6">Intenção de financiamento</h1>
+    </div>
+    <form method="POST" th:object="${intencao}"  th:action="@{/intencao/salvar}">
+
+        <div class="form-row">
+            <div><input type="hidden"  th:field="*{id}"></div>
+
+            <div class="row">
+                <div class="form-group col-6 mt-3">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="nome" placeholder="Nome do Cliente" th:field="*{nome}">
+                    <div th:errors="*{nome}" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="logradouro">Endereço:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="logradouro" placeholder="Endereço" th:field="*{logradouro}">
+                    <div th:errors="*{logradouro}" class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group col-2">
+                    <label for="numeroLogradouro">Número:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="numeroLogradouro" placeholder="Número" th:field="*{numeroLogradouro}">
+                    <div th:errors="*{numeroLogradouro}" class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group col-2">
+                    <label for="cidadeLogradouro">Cidade:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="cidadeLogradouro" placeholder="Cidade" th:field="*{cidadeLogradouro}">
+                    <div th:errors="*{cidadeLogradouro}" class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group col-2">
+                    <label for="ufLogradouro">Estado:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="ufLogradouro" placeholder="Estado" th:field="*{ufLogradouro}">
+                    <div th:errors="*{ufLogradouro}" class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group col-2">
+                    <label for="cepLogradouro">CEP:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="cepLogradouro" placeholder="CEP" th:field="*{cepLogradouro}">
+                    <div th:errors="*{cepLogradouro}" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="cpf" placeholder="CPF" th:field="*{cpf}">
+                    <div th:errors="*{cpf}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="rg">RG:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="rg" placeholder="RG" th:field="*{rg}">
+                    <div th:errors="*{rg}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="dtNasc">Data de nascimento:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="dtNasc" placeholder="Data de Nascimento" th:field="*{dtNasc}">
+                    <div th:errors="*{dtNasc}" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="email" placeholder="email" th:field="*{email}">
+                    <div th:errors="*{email}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="telResidencial">Telefone residencial:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="telResidencial" placeholder="RG" th:field="*{telResidencial}">
+                    <div th:errors="*{telResidencial}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="telCelular">Telefone celular:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="telCelular" placeholder="Data de Nascimento" th:field="*{telCelular}">
+                    <div th:errors="*{telCelular}" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-3">
+                    <label for="tipo">Tipo financiamento:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="tipo" placeholder="Tipo financiamento" th:field="*{tipo}">
+                    <div th:errors="*{tipo}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="qtdParcelas">Quantidade parcelamento:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="qtdParcelas" placeholder="Quantidade parcelamento" th:field="*{qtdParcelas}">
+                    <div th:errors="*{qtdParcelas}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="valor">Valor intenção:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="valor" placeholder="Valor intenção" th:field="*{valor}">
+                    <div th:errors="*{valor}" class="invalid-feedback"></div>
+                </div>
+                <div class="form-group col-3">
+                    <label for="salario">Salário:</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" id="salario" placeholder="Salário" th:field="*{salario}">
+                    <div th:errors="*{salario}" class="invalid-feedback"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-success  mt-3">Salvar</button>
+            <a href="/" class="btn btn-light  mt-3">Voltar</button>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
